@@ -64,10 +64,104 @@
 								<a href="./temp.zip" download class="button primary">Look, a download button!</a>
 							</div>
 							<h3>Assignment 1: Make a Box</h3>
+							<p></p>
+							I started this process by following the demo video almost to a T, but I used my own dimensions taken from a google search of "average shoebox dimension." This got me to exactly where I thought it would, I had the barebones essentials that I needed to make a box.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/boxnohandle.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							But, this is boring. Yes, it will hold all my stuff perfectly well, but what about organization? What about ease of transportation? What about pizzazz???? These were all questions I set out to address in further iterations. In my first foray beyond step-by-step guidance in Fusion was using the center point slot tool (very advanced I know). I used this tool to make oh so glorious handles that I can use to carry my box with less fear that I'm going to drop everything that I hold dear in this class. For the sake of me and everyone around me, I felt that this was an important addition.
 
-
-
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/boxhandle.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							This was definitely cool and all, but I was still relatively unimpressed with myself. I felt like there was more that I could do, that there was more to accomplish, that I could drive myself to higher heights. With these lofty goals in mind, I made another, smaller box. This was a previously unfathomed idea - a box inside of a box. It took considerable skill, modifying the dimensions to be fractions of the parameters I used for the big box. But you may ask, Ian why do you want a smaller box? Easy! To hold all my smaller things inside of the box!
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/smallbox.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							After this, I was starting to feel good about myself - I was starting to cook here. Despite what this image suggests, the sides are complete shapes and fully enclosed - Fusion is just having a tough go of it I think. I then went to lab and found out about someone recently crafted a fully functioning, hinged, tackle-style box for this assignment with all kinds of bells and whistles. I began to look for inspiration in the provided sample projects and quickly realized that the idea of handles + small box wasn't exactly an original one... I was feeling defeated. My measly, unoriginal smaller box can't compare to something with attached, moving parts. Then, inspiration struck me. What is the central piece of every toolchest? What is crucial in every garage and mechanics shop? What is ubiquitously loved between carpenters and hobbyist prototypers alike? What does almost every person use on a daily basis?  <strong>DRAWERS!!!</strong>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/drawer.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							With this glorious innovation, I was feeling pretty good about my box. I went through a couple different iterations of this drawer, including making it more integrated into the main box and trying to attach it via magnets. I ended up not integrating it into the main box for structural integrity concerns (this is just cardboard after all), and I figured putting magnets next to a bunch of electronics and small metal parts might result in headaches later down the line. Because of that, I settled on this simpler design where I will glue the drawer housing onto the bottom of the main box, and then the drawer itself is yet another smaller box that can slide in and out of the housing, resulting in a pretty sweet drawer.
+							<p></p>
 							<h3>Assignment 2: Fusion 360 Tutorial</h3>
+							<p></p>
+							A couple images of my soda bottle that I made <a href="https://www.youtube.com/watch?v=DfAfxae8aRc" style="color: blue;" target="_blank">following this tutorial</a>:
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/bottle1.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/bottle2.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/bottle3.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							
+							<!-- First, add a container div where you want the 3D model to appear -->
+							<div id="model-container" style="width: 100%; height: 500px;"></div>
+
+							<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+							<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/OrbitControls.js"></script>
+							<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js"></script>
+
+							<script>
+								const container = document.getElementById('model-container');
+								const scene = new THREE.Scene();
+								const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+								const renderer = new THREE.WebGLRenderer();
+								renderer.setSize(container.clientWidth, container.clientHeight);
+								container.appendChild(renderer.domElement);
+
+								const controls = new OrbitControls(camera, renderer.domElement);
+								const loader = new GLTFLoader();
+
+								// Add lights
+								const light = new THREE.DirectionalLight(0xffffff, 1);
+								light.position.set(1, 1, 1);
+								scene.add(light);
+								scene.add(new THREE.AmbientLight(0x404040));
+
+								camera.position.z = 5;
+
+								// Load your model
+								loader.load('./glassbottle.gltf', function(gltf) {
+									scene.add(gltf.scene);
+								}, 
+								undefined,
+								function(error) {
+									console.error('An error occurred loading the model:', error);
+								});
+
+								function animate() {
+									requestAnimationFrame(animate);
+									controls.update();
+									renderer.render(scene, camera);
+								}
+								animate();
+
+								// Handle window resize
+								window.addEventListener('resize', onWindowResize, false);
+								function onWindowResize() {
+									camera.aspect = container.clientWidth / container.clientHeight;
+									camera.updateProjectionMatrix();
+									renderer.setSize(container.clientWidth, container.clientHeight);
+								}
+							</script>
+							
 
 
 							<h3>Assignment 3: Fusion Modeling</h3>
