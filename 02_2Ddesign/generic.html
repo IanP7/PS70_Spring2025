@@ -60,9 +60,7 @@
 						<div class="inner">
 							<h1>Week 2: 2D Design & Cutting</h1>
 							<span class="image main"><img src="../images/alaskaboat.jpg" alt="" /></span>
-							<div class="flexrow">
-								<a href="./temp.zip" download class="button primary">Look, a download button!</a>
-							</div>
+							
 							<h3>Assignment 1: Make a Box</h3>
 							<p></p>
 							I started this process by following the demo video almost to a T, but I used my own dimensions taken from a google search of "average shoebox dimension." This got me to exactly where I thought it would, I had the barebones essentials that I needed to make a box.
@@ -92,6 +90,26 @@
 							<p></p>
 							With this glorious innovation, I was feeling pretty good about my box. I went through a couple different iterations of this drawer, including making it more integrated into the main box and trying to attach it via magnets. I ended up not integrating it into the main box for structural integrity concerns (this is just cardboard after all), and I figured putting magnets next to a bunch of electronics and small metal parts might result in headaches later down the line. Because of that, I settled on this simpler design where I will glue the drawer housing onto the bottom of the main box, and then the drawer itself is yet another smaller box that can slide in and out of the housing, resulting in a pretty sweet drawer.
 							<p></p>
+							The next step was to take it to the laser cutter and actually start knocking things out. There were some initial snags like using a template that was correctly named but that someone had messed with (shoutout Bobby and Kassia for figuring this out) resulting in the scoring process taking forever to do. I also forgot to account for the fact that humans with hot glue guns do not result in perfect tolerances (obviously), so I did have to resize and reprint some of my components to make sure that everything fit. My other tolerances and accounting for kerf was flawless though.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/box1.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							I really liked that I used the scoring to fold the sides up - I thought that was part of the assignment but no one else was doing it, so I felt extra cool. It looks nice to me, idk. The main issue that I had was attaching the drawer to the main box. Because it was missing a front piece (to allow for the drawer to slide in and out), there wasn't as much pull pulling it to be perfectly square. Also, imperfections in the scoring process on the laser cutter resulted in different depths of scoring, which led to the sides not folding up exactly evenly on both sides. This is all to say that I had to print the drawer itself a couple times, and the fit for the drawer housing is far from perfect, but I like how it turned out. You really only notice the major imperfections if you are looking for it, like how the housing isnt perfectly level, and the issues that you do notice are small, like the fact that the seam with the hot glue isn't gorgeous. However, the small box fits perfectly into the bigger box and will be ideal to store all of my small components in, and the glorious drawer does actually work really well now. After I glued a spacer onto the front of the drawer to act as the handle, you can easily move the drawer in and out of the box itself, giving me another easy way to store more materials. The drawer will be espescially useful for things that I really dont want to be crushed. And the handles of course were great - grippy, grabby, holdy, all of the above. Overall, I am happy with how this turned out! I took some pictures in the photo box to show her off in her true glory.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/box2.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/box3.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/box4.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+
+
 							<h3>Assignment 2: Fusion 360 Tutorial</h3>
 							<p></p>
 							A couple images of my soda bottle that I made <a href="https://www.youtube.com/watch?v=DfAfxae8aRc" style="color: blue;" target="_blank">following this tutorial</a>:
@@ -99,127 +117,116 @@
 							<div style="text-align: center;">
 								<img src="./images/bottle1.png" alt="" style="height: 350px;"/>
 							</div>
+							Front view, made with green glass texture
 							<p></p>
 							<p></p>
 							<div style="text-align: center;">
 								<img src="./images/bottle2.png" alt="" style="height: 350px;"/>
 							</div>
+							Bottom view
 							<p></p>
 							<p></p>
 							<div style="text-align: center;">
 								<img src="./images/bottle3.png" alt="" style="height: 350px;"/>
 							</div>
+							Top view
 							<p></p>
-							
-							<!-- First, add a container div where you want the 3D model to appear -->
-							<div id="model-container" style="width: 100%; height: 500px;"></div>
-
-							<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
-							<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/OrbitControls.js"></script>
-							<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js"></script>
-
-							<script>
-								const container = document.getElementById('model-container');
-								const scene = new THREE.Scene();
-								const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-								const renderer = new THREE.WebGLRenderer();
-								renderer.setSize(container.clientWidth, container.clientHeight);
-								container.appendChild(renderer.domElement);
-
-								const controls = new OrbitControls(camera, renderer.domElement);
-								const loader = new GLTFLoader();
-
-								// Add lights
-								const light = new THREE.DirectionalLight(0xffffff, 1);
-								light.position.set(1, 1, 1);
-								scene.add(light);
-								scene.add(new THREE.AmbientLight(0x404040));
-
-								camera.position.z = 5;
-
-								// Load your model
-								loader.load('./glassbottle.gltf', function(gltf) {
-									scene.add(gltf.scene);
-								}, 
-								undefined,
-								function(error) {
-									console.error('An error occurred loading the model:', error);
-								});
-
-								function animate() {
-									requestAnimationFrame(animate);
-									controls.update();
-									renderer.render(scene, camera);
-								}
-								animate();
-
-								// Handle window resize
-								window.addEventListener('resize', onWindowResize, false);
-								function onWindowResize() {
-									camera.aspect = container.clientWidth / container.clientHeight;
-									camera.updateProjectionMatrix();
-									renderer.setSize(container.clientWidth, container.clientHeight);
-								}
-							</script>
-							
-
-
+							<div class="flexrow">
+								<a href="./glassbottle.obj" download class="button primary">Download my 3D model!</a>
+							</div>
+							<p></p>
 							<h3>Assignment 3: Fusion Modeling</h3>
+							<p></p>
+							I now needed to decide what I wanted to model with my own two hands and some snazzy calipers. At this point, I am potentially leaning towards making two tablet-esque things for my final project that have the ability to communicate long distance with each other and show in real time when someone writes something on one. I think this would be a sweet way of staying in touch with loved ones when I am super far away in Alaska. Initially, I was like maybe I could model my iPad or something like that, but as much as I'm sure you all would love to see me model a rectangular prism with rounded edges, I decided against it. Instead, I decided to model the other most important aspect of a tablet to be written on - a pencil! I figure the pencil I make will eventually be stuffed full with some electronics or sensors or something, so it may end up a bit fatter than a normal number 2 pencil, but I can always go back in the timeline and beef it up if need be. With this in mind, and having made a glass bottle, I figured I could crank out a pencil pretty easily. The whole process was honestly pretty straight forward, and it came out great.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/pencil1.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							The inscribed polygon tool was my friend for making the bulk of this pencil, and it was obviously used to make the body.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/pencil2.jpg" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							Less obviously though, it also helped me cut into the cone that I drew for the tip of the pencil to ensure that it looked continuous and like how a pencil looks with those weird fringe things at the tip. I thought this was a neat little trick, and I definitely kept it in mind for the second thing that I modeled. I also used a projected plane to separate the tip of the cone from the body of the cone to delineate between the wood and the graphite, which I thought was pretty neat. I found that to be an effective method of splitting a body, which seems like a useful thing to know how to do.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/pencil3.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							The rest of the eraser building was pretty straight forward, it was just a series of extruded circles with filleting. The most challenging part was definitely getting all of the measurements down nice and accurate to make it as close to the original pencil as possible. I also had fun coloring everything! I was pretty happy with how the final product turned out and how close it was to the original:
+							<div style="text-align: center;">
+								<img src="./images/fullpencil1.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/fullpencil2.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							All in all, I thought this was a successful first independent foray into Fusion, and I thought it was super cool that I was able to make something from real life in such detail exist on my computer!
+							<p></p>
+							<div class="flexrow">
+								<a href="./modeled_pencil.f3d" download class="button primary">Download my 3D pencil model!</a>
+							</div>
+							<p></p>
+							Naively feeling emboldened by my successful, straight, normal polygon based modeling attempt, I was debating what I should model next. Sitting in my room, I reached for one of my favorite fidget toys, and did what anyone would do when they needed to really introspect and deeply ponder - rip sick kickflips on my tech deck from ~2009. After landing a steezy shovit, inspiration struck me, and my confidence told me that I should model this very tech deck. This fateful decision led to a 4+ hour oddysey of me painstakingly figuring out how to bend Fusion to my will and craft this oddly shaped, multi-demensional object. I'm sure this timeline looks wimpy and pitiful compared to many of the projects that y'all have worked on, but seriously look at this and realize that the only things that I modeled prior to this were two boxes, a bottle, and a pencil.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/timeline.png" alt="" style="width: 1000px;"/>
+							</div>
+							<p></p>
+							My first large breakthrough in the process that made me think that this was possible was the discovery of the sweep tool. This, combined with my knowledge that I would eventually use the mirror tool, allowed me to profile out exactly one half of the board. Once I measured to the best of my abilities all of the funky curvature in the board, I curved, splined, and swept until I got a crude shape of half of the board. Some tactical filleting and a mirror tool usage later, and I had a glorious skateboard! Well, at least the deck...
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/skateboard 1.png" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/skateboard2.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							I really thought I was cooking once I figured all of that out, and then I flipped the board over and started critically looking at the trucks and wheel area, and realized that I didn't know how to do like half of the required steps. Regardless, I was determined to learn and do my best at getting it pretty damn accurate. Honestly, the steps were relatively unimpressive all things considered, but I did learn how to do a sweep that created a body that didn't require me to use the thicken tool afterwards, and I used the sweep tool in a clever way to extrude a rectangle at an angle. I also had some other clever realizations like using the pencil trick to carve out a section of the truck for the bolt to lay in, but most of the work that I did was just measuring all of the little components on my tech deck and doing my best to recreate each little step and difference in size. Below are a whole bunch of pictures because I think this turned out pretty damn well and feel like you should be forced to appreciate the effort that I put into it. I also added pretty colors to match (to the best of my ability) my tech deck.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/skateboard3.png" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/skateboard4.png" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/fullboard1.png" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/IMG_2187.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/IMG_2188.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/IMG_2191.JPG" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+							I honestly was very happy with how this turned out, even though its not exactly perfect. I feel like this was a successful first foray into more complex modeling in Fusion!
 
-							
+							<p></p>
+							<div class="flexrow">
+								<a href="./techdeck model.f3d" download class="button primary">Download my 3D Tech Deck model!</a>
+							</div>
+							<p></p>
+							Finally, I combined these two into one glorious creation. What you see now is my epic tech deck doing a sick tail grind down the pencil, very akin to what it looked like when inspiration struck. I hope gazing at this image gives you the same confidence and inspiration as it did me.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/combined1.png 1.png" alt="" style="height: 350px;"/>
+							</div>
+							<div style="text-align: center;">
+								<img src="./images/combined2.png" alt="" style="height: 350px;"/>
+							</div>
+							<p></p>
+
 						</div>
 					</div>
 
 					<hr>
-					<div id = "main">
-						<div class = "inner">
-							<h3>Website Building!</h3>
-							<p></p>
-
-							I did two 75 minute classes on HTML many years ago, so I sat down, got W3schools and YouTube pulled up, strapped in, and hoped for the best. I thought the template that we were given was super ugly (no offense, it was just very barebones and not colorful), but I am super bad at making things look pretty (my sister got all the artistic genes), so I hopped over to HTML5 UP and started with one of their templates. It already had a lot of styling integrated to it already, but it looked like a completely foreign language to me, so I began starting to interpret it.
-
-							<p></p>
-							<div style="text-align: center;">
-								<img src="../images/websitefail.png" alt="" style="width: 500px; height: auto;"/>
-							</div>
-							<p></p>
-
-							Despite a few roadblocks where I thought that there was going to be actually zero formatting imported into the various pages I wanted to be styled, this was a relatively straightforward process. I figured out how to link pages to each other and change the parts of the template that I needed to change to make this look and work like a PS70 website. The biggest development was figuring out how to repurpose their gallery containers for my own purposes, put my own images in it, and allow it to link to my new pages. I also learned how to position images next to text in HTML and make them look better
-
-							<p></p>
-							<pre><code>
-&lt;article class="style6"&gt;
-	&lt;span class="image"&gt;
-		&lt;img src="images/question.png" alt="" /&gt;
-	&lt;/span&gt;
-	&lt;a href="./13_finalproject/generic.html"&gt;
-		&lt;h2&gt;FINAL PROJECT WOOOOO&lt;/h2&gt;
-		&lt;div class="content"&gt;
-			&lt;p&gt;Click to see everything that I did for my final project!&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/a&gt;
-&lt;/article&gt;
-							</code></pre>
-
-							<pre><code>
-&lt;header&gt;
-	&lt;h1 align = "center"&gt;Who is Ian Palk?!&lt;br /&gt;&lt;/h1&gt;
-	&lt;div style="display: flex; align-items: flex-start;"&gt;
-		&lt;p style="margin-top: 0;"&gt;So much text&lt;/p&gt;
-		&lt;span class="image" style="margin-left: 15px;"&gt;
-			&lt;img src="images/me.jpg" alt="" style="width: 200px; height: auto;" /&gt;
-		&lt;/span&gt;
-	&lt;/div&gt;
-&lt;/header&gt;
-							</code></pre>
-
-							<p></p>
-
-							From there, the rest of the customization was relatively straightforward and was largely just filling in the text fields with the relavent information! I am looking forward to the rest of the semester and fine-tuning the website with relavent features as they become pertinent!
-
-							<p></p>
-						</div>
-					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
