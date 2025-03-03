@@ -61,59 +61,47 @@
 							<h1>Final Project</h1>
 							<span class="image main"><img src="../images/alaskaboat.jpg" alt="" /></span>
 							<h3>Final Project WOOOOOOO</h3>
-						</div>
-					</div>
-
-					<hr>
-					<div id = "main">
-						<div class = "inner">
-							<h3>Website Building!</h3>
 							<p></p>
-
-							I did two 75 minute classes on HTML many years ago, so I sat down, got W3schools and YouTube pulled up, strapped in, and hoped for the best. I thought the template that we were given was super ugly (no offense, it was just very barebones and not colorful), but I am super bad at making things look pretty (my sister got all the artistic genes), so I hopped over to HTML5 UP and started with one of their templates. It already had a lot of styling integrated to it already, but it looked like a completely foreign language to me, so I began starting to interpret it.
-
+							In starting to plan for the final project, the project that I am leaning towards is heated clothing, specifically a thin, wearable vest that has heating elements on it. This would be built such that I could wear it underneath any of my existing jackets, and it would be easily washable if need be. With that in mind, here is the bill of materials that I came up with:
+							<ol>
+								<li>
+									Arguably the most crucial aspect of the heated vest is the heating element. I think that the best and cheapest way to make this happen would be to use positive temperature coefficient (PTC) heating pads. They are quick to warm up and they are able to self regulate their own temperatures to avoid overheating and causing a fire under my jacket. I also want them to cover a decent amount of area. I was thinking about using 4 or 6 (see battery discussion) <a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-11289/6569361" style="color: blue;" target="_blank">of these heating pads</a>
+								</li>
+								<li>
+									I also will need a battery to power these heating elements, which seems like it will be the most challenging and expensive item. I would like to get at least 4-5 hours of battery life from this vest, and ideally I would like something closer to 6-8 hours of battery life for the full days that I will spend working outside in the cold. The easiest voltage to work with is 5V, as that is what both the microcontroller and the heating pads run on, but other voltages are viable with step-up/step-down converters. If I have 4 pads, each of which are drawing 600mA, I need the battery to be rated to at least 2.4A, but I would prefer if I had some more headroom, so I looked for 5V 3A batteries. Based on my (potentially incorrect) math, just powering the 4 heating pads wired in parallel and assuming no loss due to the rest of the electronics, a 10,000mAh battery gives me ~4 hours of battery life. Realistically, this would be less, so I want a higher capacity battery. A 20,000mAh battery would likely give me 6-7 hours of real battery life, so that is what I was looking at. I saw some batteries <a href="https://www.amazon.com/GEEPFINE-20000mah-Specialized-Clothing-Charging/dp/B0DLVSZTHV/ref=sr_1_3?crid=B9CZ50TQQDQ3&dib=eyJ2IjoiMSJ9.agsfN5vWLqwVettJpf9Bj5NfsJfWiSHJcpcAc0hz0pBXMUmDwLYTZ5j9jw_EW44GSNGh07uz_rkjKuUkitC8w5JcDokNB8MXnUK41rTaOMyCNLjJJYqCwopEs4bDTIOv-x29y8WZdzEz7vHjpsihv3cra1rJcPaWii63-jPk8KtO42tVIevxJ6-4J60rotvl9Z9HL3L1WAVh1ipD4FUPmi8-vT708XNX294R95smSq4.DDsjmBvuBU0VSg-Qv7XfDeWXTTfUtpanOHJdspkdkwU&dib_tag=se&keywords=heated+clothing+battery+pack+3a&qid=1740954645&sprefix=heated+clothing+battery+pack+3a%2Caps%2C98&sr=8-3" style="color: blue;" target="_blank">like this one</a> that fit these requirements, but seem a little sketchy. However, I could pull some clever wiring shenanigans and get 6 heating pads, which would provide more warmth, and potentially use a less sketchy battery. If I wired 3 pairs of heating pads in parallel, with each pair wired in series, I would draw 10V and 1.8A of current, which is a (somewhat) compatible demand for lots of power banks that exist already for phones and laptops. I found <a href="https://www.amazon.com/INIU-20000mAh-Portable-Charger-Compatible/dp/B0CB1CZWC1/ref=sr_1_7_sspa?crid=2YNG4YQC9BW14&dib=eyJ2IjoiMSJ9._55_LBB7q4ci9cyRkyxwTsyp77xL0YrjaF9NwKDQZW0KJvWMSpG_L8oTcxQkCVlNYA6BkiB3VwA6Pj6Z7t8MYQjG1dYEYCTgDo3njztRS5xQzDgv6MJUaDwQW7XqA5MqdZJG1oWLfAQL7yZ6AhMT4Mnriy6ms4eqg7_SXBBcZeJMzGTL8yaN0SDfbrIvfsBdiBe7hAiwAt6mT7V0w8p-kLoviEEPeyBQMoEsXbwEU_8.LcP1utdsUgHN0JhnhZh1a8UCBGZ94xHxqNUaTMRC_Qw&dib_tag=se&keywords=20000mah%2Bpower%2Bbank&qid=1740955384&sprefix=200%2Caps%2C155&sr=8-7-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&th=1" style="color: blue;" target="_blank">this one</a>, which is capable of outputting either 9V or 12V with USB PD and can handle 1.8A. It is a little big, but I think that this is the best way of handling power for this project, and it will be able to use 6 heating pads to keep me even warmer. It also is nice because with multiple ports, I can plug the microcontroller into a 5V port directly while also having 9V going to the pads.
+								</li>
+								<li>USB PD Trigger/Decoder board to get 9V out of the power bank (pads will run at 4.5V instead of 5V, but with more pads this should be fine) <a href="https://www.aliexpress.us/item/3256806347576570.html?src=google&pdp_npi=4%40dis%21USD%211.27%211.26%21%21%21%21%21%40%2112000037556930814%21ppc%21%21%21&src=google&albch=shopping&acnt=708-803-3821&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&albagn=888888&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=en3256806347576570&ds_e_product_merchant_id=5294993027&ds_e_product_country=US&ds_e_product_language=en&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=19623912707&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gclid=Cj0KCQiAoJC-BhCSARIsAPhdfSg0qu-0puWt4n_urL2cpbO3-Ufug--x_XvqAhraHCrjL9dCpLTrnuIaAoHwEALw_wcB&gatewayAdapt=glo2usa" style="color: blue;" target="_blank">like this one</a></li>
+								<li>JST connectors for modular pad connections for easy washing</li>
+								<li>ESP32 or Xiao for the brains of the operation</li>
+								<li>Power switch (rocker switch) and indicator LED</li>
+								<li>Rotary encoder for temperature control</li>
+								<li>Small screen to display battery level and temperature</li>
+								<li>Temperature sensor (NTC thermistor maybe?)</li>
+								<li>22-24 AWG wire</li>
+								<li>USB A to microUSB cable</li>
+								<li>Polyester or neoprene to make the vest itself</li>
+								<li>Waterproof material to make a pouch to house the microcontroller</li>
+								<li>Velcro or snaps to make things easily removable for washing</li>
+							</ol>
 							<p></p>
-							<div style="text-align: center;">
-								<img src="../images/websitefail.png" alt="" style="width: 500px; height: auto;"/>
+							Once all is said and done, I hope for the project to look something like this. In this model, the red patches are the heat pads (to scale), the silver box is the battery (to scale), the blue box is the control box that will house the microcontroller, temperature controls, and the display (approximate scale), and the grey dot is the thermistor (approximate scale).
+							<p></p>
+							<div style="display: flex; justify-content: center;">
+								<iframe src="https://college596.autodesk360.com/shares/public/SH286ddQT78850c0d8a4492c75eaf37d1803?mode=embed" width="800" height="600" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
 							</div>
 							<p></p>
+							My timeline for this project is going to really start in full swing after my thesis is done, which is on April 8th. I promise that I will not slack on this project but my thesis is gonna be kicking my behind until I have to turn it in. After my thesis is done, I'm gonna have more time than I know what to do with and I will grind in the maker space and make so much progress on this. I really care about this project, and I want to make it the best product possible, but it won't look that way until I am done with my thesis. All I ask is that you believe me when I say I will put the time in after the thesis is done. That being said, here is my general proposed timeline:
+							<ul>
+								<li>3/27 - MVP: get ESP32 to turn the heating elements on and off</li>
+								<li>4/15 - Ramping it up: integrate temperature control into ESP32</li>
+								<li>4/29 - Learning to sow: make the vest itself</li>
+								<li>5/6 - Putting it all together: putting all the electronics onto the vest and buttoning it all up</li>
+							</ul>
 
-							Despite a few roadblocks where I thought that there was going to be actually zero formatting imported into the various pages I wanted to be styled, this was a relatively straightforward process. I figured out how to link pages to each other and change the parts of the template that I needed to change to make this look and work like a PS70 website. The biggest development was figuring out how to repurpose their gallery containers for my own purposes, put my own images in it, and allow it to link to my new pages. I also learned how to position images next to text in HTML and make them look better
-
-							<p></p>
-							<pre><code>
-&lt;article class="style6"&gt;
-	&lt;span class="image"&gt;
-		&lt;img src="images/question.png" alt="" /&gt;
-	&lt;/span&gt;
-	&lt;a href="./13_finalproject/generic.html"&gt;
-		&lt;h2&gt;FINAL PROJECT WOOOOO&lt;/h2&gt;
-		&lt;div class="content"&gt;
-			&lt;p&gt;Click to see everything that I did for my final project!&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/a&gt;
-&lt;/article&gt;
-							</code></pre>
-
-							<pre><code>
-&lt;header&gt;
-	&lt;h1 align = "center"&gt;Who is Ian Palk?!&lt;br /&gt;&lt;/h1&gt;
-	&lt;div style="display: flex; align-items: flex-start;"&gt;
-		&lt;p style="margin-top: 0;"&gt;So much text&lt;/p&gt;
-		&lt;span class="image" style="margin-left: 15px;"&gt;
-			&lt;img src="images/me.jpg" alt="" style="width: 200px; height: auto;" /&gt;
-		&lt;/span&gt;
-	&lt;/div&gt;
-&lt;/header&gt;
-							</code></pre>
-
-							<p></p>
-
-							From there, the rest of the customization was relatively straightforward and was largely just filling in the text fields with the relavent information! I am looking forward to the rest of the semester and fine-tuning the website with relavent features as they become pertinent!
-
-							<p></p>
 						</div>
 					</div>
+
+					
 
 				<!-- Footer -->
 					<footer id="footer">
