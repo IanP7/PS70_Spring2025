@@ -80,7 +80,7 @@
 								<img src="./images/heatcircuit.jpg" alt="" style="width: 500px; height: auto;"/>
 							</div>
 							<p></p>
-							At this point, I had an extremely minimal project, but it was starting to come together. The next step was to get the thermistor that could now accurately read temperature to control the heat pad that could now produce heat. With a little bit of simple coding, I was able to get my heat pad to stay within a predetermined threshold. While the thermistor read a temperature lower than the threshold, it would heat up the pad until it reached the target temperature. Once it reached the target temperature, it would turn off the heat pad until it fell below the target temperature, and it continued to oscillate around the target temperature in this way, reaching a quasi-steady state of temperature. This worked! I had just created a truly minimum viable product that could heat up a heat pad to a specified temperature and hold it there indefinitely. To make this MVP slightly less M and slightly more V, I also added indicator LEDs to show when the temperature was within 1° of the target temperature (this was the buffer zone that I established that is deemed the correct temperature) and when the heat pad was on, even if it was within the buffer zone. This helps to understand how the heat pad itself is working and maintaining the target temperature. I also added a potentiometer, so that I could adjust the target temperature on the fly and not have to reupload the code each time, manually hardcoding it. I set the potentiometer to correspond to a range of temperatures that is dynamically updated with the different values of the pot ranging from 75-95°F, although with the current voltage limitations, getting above 90ish is tough. This will be fixed with a better power system. This all worked totally perfectly. No matter how I set the temperature using the pot, the heat pad would respond appropriately in order to attempt to get to and then oscillate around the target temperature. Here is the schematic of those things.
+							At this point, I had an extremely minimal project, but it was starting to come together. The next step was to get the thermistor that could now accurately read temperature to control the heat pad that could now produce heat. With a little bit of simple coding, I was able to get my heat pad to stay within a predetermined threshold. While the thermistor read a temperature lower than the threshold, it would heat up the pad until it reached the target temperature. Once it reached the target temperature, it would turn off the heat pad until it fell below the target temperature, and it continued to oscillate around the target temperature in this way, reaching a quasi-steady state of temperature. This worked! Unfortunately, I had written this without using the C++ class structure, so I rewrote the code to do exactly the same thing, but using the class structure. I had just created a truly minimum viable product that could heat up a heat pad to a specified temperature and hold it there indefinitely. To make this MVP slightly less M and slightly more V, I also added indicator LEDs to show when the temperature was within 1° of the target temperature (this was the buffer zone that I established that is deemed the correct temperature) and when the heat pad was on, even if it was within the buffer zone. This helps to understand how the heat pad itself is working and maintaining the target temperature. I also added a potentiometer, so that I could adjust the target temperature on the fly and not have to reupload the code each time, manually hardcoding it. I set the potentiometer to correspond to a range of temperatures that is dynamically updated with the different values of the pot ranging from 75-95°F, although with the current voltage limitations, getting above 90ish is tough. This will be fixed with a better power system. This all worked totally perfectly. No matter how I set the temperature using the pot, the heat pad would respond appropriately in order to attempt to get to and then oscillate around the target temperature. Here is the schematic of those things.
 							<p></p>
 							<div style="text-align: center;">
 								<img src="./images/ledpot.jpg" alt="" style="width: 500px; height: auto;"/>
@@ -116,6 +116,22 @@
 								<iframe src="https://college596.autodesk360.com/shares/public/SH286ddQT78850c0d8a4492c75eaf37d1803?mode=embed" width="800" height="600" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
 							</div>
 							<p></p>
+							I also looked at the LED that lights up whenever the heat pad is turned on with the oscilloscope. Since it is not constantly on and is on for different periods of time each time, the idea of a time domain is not super applicable to this. However, I was able to look at the square waves indicating when the heat pad is on, and it showed me that the pad is turned on for ~125-250ms at a time. It is not on a fixed clock. This shows exactly how the heat pad is being pulsed on and off to maintain a constant temperature.
+							<p></p>
+							<div style="display: flex; justify-content: center; gap: 20px;">
+							    <img src="./images/scope1.jpg" alt="" style="width: 500px; height: auto;">
+							    <img src="./images/scope2.jpg" alt="" style="width: 500px; height: auto;">
+							</div>
+							<p></p>
+							<p></p>
+							<div style="display: flex; justify-content: center; gap: 20px;">
+							    <img src="./images/scope3.jpg" alt="" style="width: 500px; height: auto;">
+							    <img src="./images/scope4.jpg" alt="" style="width: 500px; height: auto;">
+							</div>
+							<p></p>
+							<div class="flexrow">
+								<a href="./heatpad.zip" download class="button primary">Download my code</a>
+							</div>
 						</div>
 					</div>
 
