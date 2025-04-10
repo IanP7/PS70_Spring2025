@@ -59,61 +59,39 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Week 9: Radio, WiFi, Bluetooth (IoT)</h1>
-							<span class="image main"><img src="../images/alaskaboat.jpg" alt="" /></span>
+							<span class="image main"><img src="./images/iot.png" alt="" /></span>
 							<h3>Assignment: [Program something with IOT]</h3>
-						</div>
-					</div>
-
-					<hr>
-					<div id = "main">
-						<div class = "inner">
-							<h3>Website Building!</h3>
-							<p></p>
-
-							I did two 75 minute classes on HTML many years ago, so I sat down, got W3schools and YouTube pulled up, strapped in, and hoped for the best. I thought the template that we were given was super ugly (no offense, it was just very barebones and not colorful), but I am super bad at making things look pretty (my sister got all the artistic genes), so I hopped over to HTML5 UP and started with one of their templates. It already had a lot of styling integrated to it already, but it looked like a completely foreign language to me, so I began starting to interpret it.
-
+							Neither Gautam nor I had any experience with any of the topics this week at all, whatsoever, so we decided to start slow and work our way up. The first step that we wanted to take was to decide which communication method we wanted to use. We went on to Random Nerd tutorials for ESP32 and browsed around until we found <a href = "https://randomnerdtutorials.com/esp32-websocket-server-sensor/">this tutorial on using a BME280 with WebSockets.</a> We decided to give this a try since we thought that we had BME280s in the lab, and I wanted to explore this as a potential option for my heated vest. We went through the steps outlined in that tutorial to install LittleFS and get that up and running, which proved to be a very non-trivial process. However, after a lot of troubleshooting and realizing that the solution was to restart Arduino IDE, we got it to work.
 							<p></p>
 							<div style="text-align: center;">
-								<img src="../images/websitefail.png" alt="" style="width: 500px; height: auto;"/>
+								<img src="./images/littlefs.png" alt="" style="width: 700px; height: auto;"/>
 							</div>
 							<p></p>
-
-							Despite a few roadblocks where I thought that there was going to be actually zero formatting imported into the various pages I wanted to be styled, this was a relatively straightforward process. I figured out how to link pages to each other and change the parts of the template that I needed to change to make this look and work like a PS70 website. The biggest development was figuring out how to repurpose their gallery containers for my own purposes, put my own images in it, and allow it to link to my new pages. I also learned how to position images next to text in HTML and make them look better
-
+							After we got that working, we wired up the sensor according to the schematic in the tutorial, copied their code, and tried to run it, but failed. After doing extensive googling, we realized that we had a BMP module, not a BME module. Shoutout to <a href = "https://forum.arduino.cc/t/bmp280-hw-611-e-p-280-library-sensor-fault/590528">timurmengazi on the Arduino Forum for asking this question and helping us figure that out.</a> We got that sorted, adjusted the code accordingly, and boom! It worked! We were blown away by being able to see this reading on the website in 3-second intervals. However, this is where the successes really came to a screeching halt. We wanted to push this a bit further than just following some tutorial online, and we wanted to actually write some of our own code and try some of our own things out. We had just learned how to send data from the server to the client, so we wanted to experiment with sending data from the client to the server. To do this, we wired up three LEDS to the ESP32, wrote some code to have them regulated by sliders (inspired by <a href = "https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/">this other Random Nerd tutorial</a>), and tried to get it working. Low and behold, FOUR HOURS LATER, we still could not get EVEN A BUTTON to turn them on and off to work. I cannot express how unbelievably frustrating this was that everything seemed right, but we just couldn't for the life of us get the stupid LED to turn on. Quickly, it became apparent that the issue was that the client was not sending data to the server, despite us telling it to, but we could not figure out why this may be the case or how to fix it. 
 							<p></p>
-							<pre><code>
-&lt;article class="style6"&gt;
-	&lt;span class="image"&gt;
-		&lt;img src="images/question.png" alt="" /&gt;
-	&lt;/span&gt;
-	&lt;a href="./13_finalproject/generic.html"&gt;
-		&lt;h2&gt;FINAL PROJECT WOOOOO&lt;/h2&gt;
-		&lt;div class="content"&gt;
-			&lt;p&gt;Click to see everything that I did for my final project!&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/a&gt;
-&lt;/article&gt;
-							</code></pre>
-
-							<pre><code>
-&lt;header&gt;
-	&lt;h1 align = "center"&gt;Who is Ian Palk?!&lt;br /&gt;&lt;/h1&gt;
-	&lt;div style="display: flex; align-items: flex-start;"&gt;
-		&lt;p style="margin-top: 0;"&gt;So much text&lt;/p&gt;
-		&lt;span class="image" style="margin-left: 15px;"&gt;
-			&lt;img src="images/me.jpg" alt="" style="width: 200px; height: auto;" /&gt;
-		&lt;/span&gt;
-	&lt;/div&gt;
-&lt;/header&gt;
-							</code></pre>
-
+							<div style="text-align: center;">
+								<img src="./images/frustration.png" alt="" style="width: 600px; height: auto;"/>
+							</div>
 							<p></p>
-
-							From there, the rest of the customization was relatively straightforward and was largely just filling in the text fields with the relavent information! I am looking forward to the rest of the semester and fine-tuning the website with relavent features as they become pertinent!
-
+							After four hours and countless failures trying to address the same problem in a trillion different ways, we had to give up for the night.
 							<p></p>
+							On Day 2, we went to Nathan's office hours, and, of course, the issue was solved in less than an hour. Nathan suggested to add a couple debug lines to our preexisting debug lines that revealed that the code wasn't flowing through the code in any reasonable way. We changed around some messages that it was printing out, which then didn't change in the console log, showing us that LittleFS wasn't uploading or storing the files in the way that we thought it was. I don't know why LittleFS wasn't working, but this whole ordeal has shown us that LittleFS is hot garbage and don't ever use it. Instead, when we put all of our code into one giant arduino file including the html, css, and js, it worked perfectly. It's so frustrating that our code was right this entire time, but we wasted so much time wrestling with the stupid file system. Anyways, here are some pics of it working:
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/working.jpg" alt="" style="width: 600px; height: auto;"/>
+							</div>
+							<p></p>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/working.gif" alt="" style="width: 600px; height: auto;"/>
+							</div>
+							<p></p>
+							<div class="flexrow">
+								<a href="./arduino_IOT.zip" download class="button primary">Download the useful code here!</a>
+							</div>
 						</div>
 					</div>
+
 
 				<!-- Footer -->
 					<footer id="footer">
