@@ -59,61 +59,111 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Weeks 10-12: Machine Building</h1>
-							<span class="image main"><img src="../images/alaskaboat.jpg" alt="" /></span>
+							<span class="image main"><img src="./images/banner.jpg" alt="" /></span>
 							<h3>Assignment: Build a Drawing Robot</h3>
+							For this, daunting assignment, our group got started with a suggestion from Wyatt who wanted to capitalize on the fact that his partner is a pastry chef - he suggested that we make a machine that can draw using cinnamon to decorate a cake or a coffee. Everyone was onboard with the idea - it seemed like a cool and unique take on the drawing machine assignment - but we didn't even know where to start. We began brainstorming some basics of the project - What gantry system are we going to use? How will we deposit the cinnamon? How is this device going to fit over top of a cake or coffee? In this process, we decided that we wanted to try out using polar coordinates instead of the typical, and available, cartesian coordinate gantries. We wanted to try this for a couple reasons. First, it would be pretty cool to just get something using an entirely different coordinate system working and functional - yes, it's still effectively the same process, but now instead of moving X and Y, we are moving R and Theta, which I think is pretty sick. Second, polar coordinates are conducive to round things, much like a cup of coffee or a (non-sheet) cake. These round objects are easier to draw over if we are drawing using circles. Third, which is kind of an added bonus, is that completing the assignment of drawing a circle with a fixed radius seemed much easier with polar coordinates than cartesian ones. With this in mind, we got to modelling our first iteration of what the project might look like, just so that we were all on the same page.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/protogantry.jpeg" alt="" style="width: 600px; height: auto;"/>
+							</div>
+							<p></p>
+							After that, we decided that the most effective way to attack this project would be to divide and conquer so that we could maximize the potential of the diverse skill sets on the team. Wyatt and Ian are better at hardware, designing things, and then bringing them to fruition, and Ian already had some ideas about end effector design, while Wyatt had designed the gantry prototype, so Ian took the end effector and Wyatt took the gantry. On the other hand, Marcus and Calvin were coding wizards, so they set off on the arduous task of converting lines to coordinates and then coordinates to movements. We will  be breaking each of these tasks down individually below and the timeline that it took for them to each get to a point where we could put the whole machine together and start testing. Here are what each of us were assigned to work on, though, as all good plans do, things didn't necessarily go exactly to plan.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/assignments.jpg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<h4>Gantry</h4>
+							This seemed like a crazy difficult task to tackle at first - it needs to be circular, sit on top of a cake or coffee, but still hold the end effector close enough to the medium to have a crisp line, it needs to be able to rotate the end effector, and so many more little considerations. With this in mind, we realized that there were no gantries like this that existed in the lab, so we began prototyping the backbone of our machine.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/protogantry1.jpeg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/protogantry2.jpg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							While our early prototypes were crude, we rapidly learned and developed. We started with cardstock for an easily iterable material, before moving to lasercut wood for a more sturdy build. We quickly realized that the current way of holding the end effector, with it dangling from the gantry, was not going to be sturdy enough to hold everything the way that it needed to, It was too flimy and couldn't attach very securely. We tried to solve this problem by making more surface area touching the gantry to hold it in place more securely, but we realized that we needed a completely different approach to this.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/protogantry3.jpeg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/schema.jpeg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							With some help from Bobby and Nathan, we came up with a new design that had a single large platform resting on top of roller bearings that would spin and the gantry was hollow underneath. This allows us to remove the platform to access the cake and fixes the stability issues because now the platform is resting on solids instead of being help up in the air. With this new schematic, we got to designing the fifth iteration of the gantry system, which would prove to more or less be the last. The platform rested on roller bearing to support it and was sandwiched in between the stepper motor with a gear attached to it and horizontally-mounted roller bearings that allowed the platform to freely spin. The end effector sat in a channel cut into the platform, and the stepper motor could rest on the platform without concerns for weight. This would remain the central design until the final bender described below where it was tweaked a bit.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/gantryfinalish.gif" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<h4>End Effector</h4>
+							The end effector needed to hold cinnamon, not deposit cinnamon when moving from position to position, and deposit cinnamon in the tightest line possible when we want it to. Our initial thought was a cone, and we didn't have cinnamon, so we prototyped using laminating paper rolled into cone held together with tape that we could vary to change the hole size and corn starch in lieu of cinnamon. After some extremely messy testing, we found a hole size that when it was tapped, corn starch would be deposited and it wouldnt otherwise. To automate this tapping, we tought to use an eccentric motor, but that caused corn starch to fly everywhere, and then we found little vibrating motors that worked great. We could plug them directly into 3V3 and GND, hold it up to the cone, and it would vibrate out corn starch. After taking some measurements, we wanted to make a more official looking end effector prototype, so we designed a tiny little cone that could be printed in 8 minutes.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/eev1.png" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							It, shockingly, didn't work, and that began the long, long process of iterating on this stupid little end effector. It started with trying out various hole sizes, cone angles, and depths until we got one that seemed to be working, and then it moved to adding a mount that the screw motor could attach to, divots for the vibrational motors to attach to to make it more robust than just someone holding the motor onto the side of a cone, and shaping the outside of the end effector so that it would fit in the gantry. Through a STUPID number of iterations, we successfully crafted the perfect, optimized end effector. It has a smashed in face because of an earlier iteration of the gantry and how it was supposed to fit, but even though we no longer need that, if it ain't broke don't fix it. It fits perfectly in the channel of the gantry, it attaches to the screw motor, it houses the vibrational motor, and, most importantly, it deposits cinnamon only when the motor vibrates, and it does so in a gorgeously smooth line. Truly this end effector is a work of art, but it was not without its severe trials and tribulations.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/ee_evolution.jpg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/ee_final.png" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							After that, Ian also designed brackets to mount the roller bearings that the platform of the gantry would sit on. We found a small brass pipe that fit perfectly as an axle for these rollers that we found in the lab and got to work. This was a much more straightforward process, especially because they could be printed much faster. We designed an end cap to clip on to the end of the pipe and hold the roller in place, and multiple iterations of the bracket gave us an omega-shaped, properly-dimensioned, clip that grabbed onto the pipe and screwed into the gantry, holding everything in place. We also added a little duck bill to the clip to pinch the part of the roller that is stationary to hold it in place so it wasn't wandering as the top platform rolled around.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/pipebracket.png" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<h4>Code</h4>
+							We originally tried to make it so that we could upload any line drawing to a website, automatically convert it to polar coordinates, and then we could make the motor track those polar coordinates and replicate the uploaded image. We got the first half of this mostly working, and could convert line drawings to polar coordinates, but soon after trying to implement this code, we realized that it was going to be way too hard to get the motors to follow these coordinates. We got each of the motors running individually, but the motors were not cooperating with us and refused to work well in tandem to follow the coordinates that we laid out, since that would involve code running simultaneously instead of in sequence. With that in mind, we scrapped this idea and just focused on getting circles.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/coords.jpg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							This involved finding the middle point, moving to some random point further out from the midpoint, locking the end effector in place, and then spinning the rotational motor. We implemented a limit switch that the end effector runs into each time to find its "home" position, and then we defined a number of steps away from that as the midpoint. We hardcoded the circle positions. The next steps to beef this up would be the make a program that can emulate more complex patterns that we are still hardcoding in, and then we may be able to move up to having it draw from images, but that is still way down the line. For now, we are content with our hardcoded circles.
+							<p></p>
+							<h4>Motors</h4>
+							We went through so. many. different. motors. trying to get this to work, so I will spare the reader and get to the chase of what worked. We had a radial screw motor for linear movement along the R "axis" in our polar coordinate system. This was a stepper motor that used a lead screw and special attachment that mounted to our end effector which allowed for it to slide as the lead screw turned. The motor that controlled the theta "axis" was a little more complicated. We went through various stepper motors, but realized that the ones that we were using were not powerful enough, so we found one that runs on 12V and prayed we didn't fry too much of our circuitry. This stepper motor is mounted on the side of our gantry and turns a 21-tooth gear that meshes with the 119-tooth gear that makes up the top platform of the gantry. In this way, we could turn the stepper motor and have it control the rotation of the top platform which had everything on it. We also completely bricked at least one stepper motor and one vibrational motor, although the stepper motor may or may not have been our fault. Regardless, we got them attached and working.
+							<p></p>
+							<h4>The Last Bender</h4>
+							For a stupid, ungodly amount of time on the night before the assignment was due, we locked ourselves in the PS70 lab until this project was done. If I tried to document everything that went wrong on this all-night bender, it would be a multi-page essay, so instead I will cut right to the chase on the highlights. We replaced the top platform with an acrylic version and the rotating gear with an acrylic gear to make the whole thing flatter and rotate more smoothly. We designed a little enclosure that hot glues to the top platform that holds the stepper motor in place, while still allowing us to pick up and place the motor down for debugging. The vibrating motor wasn't cooperating for a myriad of reasons and everything that we did seemed to make it worse, which we narrowed down to it being a power issue. To remedy this, we hooked up an entirely separate power circuit using a tiny ~3.7V LiPo battery that definitely wasn't harvested from a vape and connected it to our main circuit via a common ground and a transistor. The transistor gate is connected to a data pin on the arduino, so when the arduino sends a high digitalwrite, it connects the circuit of the 3.7V LiPo to the vibrating motor and allows us to control when it vibrates. This was originally giving us weird voltage spikes, but it was due to an issue with common ground. Now, we had an insane rats nest of wires, and the most technical and effective solution we could devise was to use copious quantities of masking tape, hot glue, and cardboard. All it takes to run the motor in a circle is one hand holding up the cables instead of four hands praying to every deity that something doesn't come unplugged and start a fire! Through what can only be described as delirium, we squashed a seemingly neverending stream of little issues that kept cropping up, and ever so slowly krept towards a more finalized version. Then, at approximately 4:36 AM, a miracle struck. Our stupid little end effector slowly inched towards the limit switch, hit it and indicated its home position, inched forward, deposited the single most promising dot of cinnamon known to mankind, then began to make some of the most beautiful circles any of us have ever seen. After some tweaking of the motor speeds, center position, and when to turn on/off the vibrating motor, we had the single most overengineered circle drawer ever. And it was amazing. We needed to reprint the end effector with a higher infill and more robust design because it got destroyed one of the times the motors went haywire, and we needed to sift the cinnamon before our demo to ensure that there was no clumping, but other than that, we are ready to wow everyone with a delicious cake and some awesome cinnamon circles.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/working1.jpg" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<div style="text-align: center;">
+								<iframe 
+									width="100%" 
+									height="315" 
+									style = "width: 800px; height: 600px;"
+									src="https://www.youtube.com/embed/mFyxSnjmy2I" 
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+									allowfullscreen
+									style="border: none;">
+								</iframe>
+							</div>
+							<p></p>
+							
+							<div class="flexrow">
+								<a href="./cinnabot.zip" download class="button primary">Download everything you could ever want here!</a>
+							</div>
 						</div>
 					</div>
 
 					<hr>
-					<div id = "main">
-						<div class = "inner">
-							<h3>Website Building!</h3>
-							<p></p>
 
-							I did two 75 minute classes on HTML many years ago, so I sat down, got W3schools and YouTube pulled up, strapped in, and hoped for the best. I thought the template that we were given was super ugly (no offense, it was just very barebones and not colorful), but I am super bad at making things look pretty (my sister got all the artistic genes), so I hopped over to HTML5 UP and started with one of their templates. It already had a lot of styling integrated to it already, but it looked like a completely foreign language to me, so I began starting to interpret it.
-
-							<p></p>
-							<div style="text-align: center;">
-								<img src="../images/websitefail.png" alt="" style="width: 500px; height: auto;"/>
-							</div>
-							<p></p>
-
-							Despite a few roadblocks where I thought that there was going to be actually zero formatting imported into the various pages I wanted to be styled, this was a relatively straightforward process. I figured out how to link pages to each other and change the parts of the template that I needed to change to make this look and work like a PS70 website. The biggest development was figuring out how to repurpose their gallery containers for my own purposes, put my own images in it, and allow it to link to my new pages. I also learned how to position images next to text in HTML and make them look better
-
-							<p></p>
-							<pre><code>
-&lt;article class="style6"&gt;
-	&lt;span class="image"&gt;
-		&lt;img src="images/question.png" alt="" /&gt;
-	&lt;/span&gt;
-	&lt;a href="./13_finalproject/generic.html"&gt;
-		&lt;h2&gt;FINAL PROJECT WOOOOO&lt;/h2&gt;
-		&lt;div class="content"&gt;
-			&lt;p&gt;Click to see everything that I did for my final project!&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/a&gt;
-&lt;/article&gt;
-							</code></pre>
-
-							<pre><code>
-&lt;header&gt;
-	&lt;h1 align = "center"&gt;Who is Ian Palk?!&lt;br /&gt;&lt;/h1&gt;
-	&lt;div style="display: flex; align-items: flex-start;"&gt;
-		&lt;p style="margin-top: 0;"&gt;So much text&lt;/p&gt;
-		&lt;span class="image" style="margin-left: 15px;"&gt;
-			&lt;img src="images/me.jpg" alt="" style="width: 200px; height: auto;" /&gt;
-		&lt;/span&gt;
-	&lt;/div&gt;
-&lt;/header&gt;
-							</code></pre>
-
-							<p></p>
-
-							From there, the rest of the customization was relatively straightforward and was largely just filling in the text fields with the relavent information! I am looking forward to the rest of the semester and fine-tuning the website with relavent features as they become pertinent!
-
-							<p></p>
-						</div>
-					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
