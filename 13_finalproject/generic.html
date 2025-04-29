@@ -97,6 +97,40 @@
 								<li>4/29 - Learning to sow: make the vest itself</li>
 								<li>5/6 - Putting it all together: putting all the electronics onto the vest and buttoning it all up</li>
 							</ul>
+							<h3>Integrated Project</h3>
+							My working on the integrated project consisted of two parts - designing a PCB and learning to sow. The first part, designing a PCB was a slow-going process, but EasyEDA made the process relatively straightforward. The biggest challenge in this part was designing electronics without ever being able to actually test them - just hoping that they work. I did some preliminary breadboard testing to make sure that all of my theories were correct, but in the end it was essentially just scaling up my MVP to have three heat pads and work on two different power circuits. I have designed one other PCB before, but that one came with a mostly made gerber file already and just required some tweaks, so starting totally from scratch was tough. It took many hours of staring at datasheets from random websites and using the worst search function know to mankind on the LCSC website to find the parts that I was looking for, but once I did, I was able to plop them into the schematic. I connected the heat pads to a circuit that will use 12V input power, though I later realized that I could've streamlined this process since the PD trigger boards are female connectors and not male ones, so it would be board-side and not battery-side, so there is a space for a JST input connector on the board, but I will have to mount the trigger board separately. The LED and rotary encoder work on 5V power, and I added a small OLED screen mount so that I can easily display statistics like temperature and goal temperature. The roatary encoder will be harvested from a board that we already have in the lab, and the transistors are parts that we already have, so I only had the resistors surface mounted. 
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/vestschem.png" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							After I finished the schematic, I moved to PCB design, with the goal of getting it to be as small as possible. I also wanted it to be narrow to minimize the footprint and weight distribution effects that this would have on the vest. The Autoroute option in EasyEDA was completely useless, so I went at it myself and manually routed wires. I also needed multiple thicknesses of wire because some wires would carry 12V, 2A and some would carry 5V, 1A. This process almost felt like a puzzle game to me, trying to ensure that everything go to where I wanted it to without crossing any other wires, so that part was pretty fun I guess. I also added pin holes for the last available analog pin on the Xiao that wasn't occupied, and added multiple additional busses for I2C connectors, as I realized that I did not have any remaining pins if I wanted more than one temperature sensor. With the I2C option, I can hook up multiple compatible sensors to the same 4 pins that are already being used by the OLED screen. I haven't figured out exactly how I'm going to do this yet, so I just gave myself the option with some additional pin holes. I also added generic through holes for ease of mounting. Finally, I went crazy with the silkscreen labelling to make my life as easy as possible determining what goes where to minimize future multimeter guess and check work. After I was happy with my design, I went through the ordering steps and sent all of my preferences and files to Nathan for ordering. No particular options were selected - I wanted to have a purple PCB, but it would've taken longer, and no one is going to see this PCB ever, so it didn't matter.
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/PCBdiagram.png" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							After the PCB was done, I got to actually working on the packaging of this project. The main target that I wanted to tackle for this week was making some semblance of the vest and learning how to sow in the process. I have used a sewing machine once or twice before, but it was always just super basic straight stitches by pressing the pedal down and letting it do its thing. This time, I would need to do a bit more than that. The freecycle in my house is always literally overflowing, so my plan was to go rifle through those bins and find a very oversized shirt or something that would work for the midlayer goal of my vest - I want it to be able to fit over top of a sweater or bulky shirt but not be too baggy. I was out of town over the weekend and spent all of the time allotted to PS70 the week before on the cinnabot, so that meant that I left this process until Monday. Of course, the one and only time the freecycle has LITERALLY EVER THIS ENTIRE YEAR been cleaned out was over the weekend, leaving my original plan high and dry. I went back to the drawing board and pulled out these black undershirts that I have, which I think could work well since they are thin, easily washable, and stretchy, allowing them to fit comfortably over various thicknesses. Unfortunately, since they are undershirts, they were way too tight. Because of this, I got to tackling my first large sewing project - combining the two tight undershirts into one, looser and baggier undershirt. I cut the sides off of one to the desired thickness, split the sides of the other that would eventually form the midlayer, and much like Dr. Frankenstein did to his monster, sewed the pieces all together into a larger version of what once was. 
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/IMG_2775.JPG" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/IMG_2778.JPG" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							<div style="text-align: center;">
+								<img src="./images/IMG_2796.JPG" alt="" style="width: 800px; height: auto;"/>
+							</div>
+							<p></p>
+							Considering this was my first time doing anything even remotely similar to this, I was pretty happy with how it turned out - it's amazing what you can learn from YouTube. I had expanded the midlayer to be a pretty ideal width. The width was way too tight and now it fits overtop of bulky shirts and sweaters well. Unfortunately, it still looks a little dumb because the armpits are the portmanteau of two sweaters, and the length is way too long. I tried to address these issues last night, but I was way too tired from my weekend and was butchering it. I also realized that I needed some more precision, so I went back to my dorm and asked for some help pinning the midlayer to better dimensions. Now, the midlayer is all pinned to the right dimensions including the armpits and the length, so the next steps will be sewing those dimensions into place, sewing the pockets on, and sewing the zipper on!
+							<p></p>
+							<div style="display: flex; justify-content: center; gap: 20px;">
+							    <img src="./images/IMG_2812.JPG" alt="" style="width: 500px; height: auto;">
+							    <img src="./images/IMG_2813.JPG" alt="" style="width: 500px; height: auto;">
+							</div>
+							<p></p>
 
 						</div>
 					</div>
